@@ -1,0 +1,92 @@
+/* src/PlantSVGMap.css */
+
+.map-wrapper {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  align-items: flex-start;
+}
+
+.map-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #2d3748;
+  padding-left: 20px;
+}
+
+/* ── PULSE ANIMATION ──
+   Uses scale instead of r (r cannot be CSS-animated reliably cross-browser) */
+@keyframes pulse {
+  0%   { transform: scale(1);    opacity: 0.25; }
+  50%  { transform: scale(1.45); opacity: 0.08; }
+  100% { transform: scale(1);    opacity: 0.25; }
+}
+
+.sensor-pulse {
+  transform-origin: center;
+  transform-box: fill-box;       /* makes transform-origin work inside SVG */
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+/* ── DETAIL PANEL ── */
+.detail-panel {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 240px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.detail-panel h3 {
+  margin: 0 0 8px 0;
+  font-size: 17px;
+}
+
+.detail-panel p {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.close-btn {
+  margin-top: 14px;
+  padding: 7px 14px;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  width: 100%;
+}
+
+.close-btn:hover {
+  background: #cbd5e0;
+}
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
